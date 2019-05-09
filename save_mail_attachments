@@ -12,7 +12,7 @@ Private Sub Application_NewMail()
     Set myfol = onamespace.GetDefaultFolder(olFolderInbox)
     
     Dim destfol As Outlook.Folder
-    Set destfol = myfol.Folders("Calce Bahia")
+    Set destfol = myfol.Folders("Pasta de Emails")
 
     Dim omail As Outlook.MailItem
     Set omail = Outlook.CreateItem(olMailItem)
@@ -22,11 +22,11 @@ Private Sub Application_NewMail()
 
     For Each omail In myfol.Items
             If omail.SenderEmailType = "EX" Then
-                If omail.sender.GetExchangeUser.PrimarySmtpAddress = "cmoura@sunsetshoes.com.br" Then
+                If omail.sender.GetExchangeUser.PrimarySmtpAddress = "xxxxxxx@xxxxxxxxx.com.br" Then
                     For Each atmt In omail.Attachments
                         assunto = omail.Subject
-                        CreateFolder ("P:\_Arezzo\Fichas_Calce\ICCA-Bahia\" & assunto)
-                        atmt.SaveAsFile "P:\_Arezzo\Fichas_Calce\ICCA-Bahia\" & assunto & "\" & atmt.fileName
+                        CreateFolder ("P:\Pasta_compartilhada\" & assunto)
+                        atmt.SaveAsFile "P:\Pasta_compartilhada" & assunto & "\" & atmt.fileName
                     Next
                     omail.Move destfol
                 End If
